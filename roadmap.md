@@ -3,4 +3,4 @@
 - [x] Crear Inicio, Quiénes Somos, Productos y Servicios
 - [x] Crear Noticias, artículos individuales, Contacto y páginas legales
 - [x] Añadir slider, galería, FAQ, formulario y WhatsApp
-- [ ] Verificar diseño, enlaces, formularios y adaptación móvil
+- [x] Verificar diseño, enlaces, formularios y adaptación móvil
