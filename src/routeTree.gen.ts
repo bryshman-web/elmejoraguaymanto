@@ -10,33 +10,140 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as ContactoRouteImport } from './routes/contacto'
+import { Route as NoticiasRouteImport } from './routes/noticias'
+import { Route as PoliticaDePrivacidadRouteImport } from './routes/politica-de-privacidad'
+import { Route as ProductosRouteImport } from './routes/productos'
+import { Route as QuienesSomosRouteImport } from './routes/quienes-somos'
+import { Route as ServiciosRouteImport } from './routes/servicios'
+import { Route as TerminosYCondicionesRouteImport } from './routes/terminos-y-condiciones'
+import { Route as NoticiasSlugRouteImport } from './routes/noticias.$slug'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ContactoRoute = ContactoRouteImport.update({
+  id: '/contacto',
+  path: '/contacto',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const NoticiasRoute = NoticiasRouteImport.update({
+  id: '/noticias',
+  path: '/noticias',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PoliticaDePrivacidadRoute = PoliticaDePrivacidadRouteImport.update({
+  id: '/politica-de-privacidad',
+  path: '/politica-de-privacidad',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ProductosRoute = ProductosRouteImport.update({
+  id: '/productos',
+  path: '/productos',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const QuienesSomosRoute = QuienesSomosRouteImport.update({
+  id: '/quienes-somos',
+  path: '/quienes-somos',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ServiciosRoute = ServiciosRouteImport.update({
+  id: '/servicios',
+  path: '/servicios',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const TerminosYCondicionesRoute = TerminosYCondicionesRouteImport.update({
+  id: '/terminos-y-condiciones',
+  path: '/terminos-y-condiciones',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const NoticiasSlugRoute = NoticiasSlugRouteImport.update({
+  id: '/$slug',
+  path: '/$slug',
+  getParentRoute: () => NoticiasRoute,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/contacto': typeof ContactoRoute
+  '/noticias': typeof NoticiasRouteWithChildren
+  '/politica-de-privacidad': typeof PoliticaDePrivacidadRoute
+  '/productos': typeof ProductosRoute
+  '/quienes-somos': typeof QuienesSomosRoute
+  '/servicios': typeof ServiciosRoute
+  '/terminos-y-condiciones': typeof TerminosYCondicionesRoute
+  '/noticias/$slug': typeof NoticiasSlugRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/contacto': typeof ContactoRoute
+  '/noticias': typeof NoticiasRouteWithChildren
+  '/politica-de-privacidad': typeof PoliticaDePrivacidadRoute
+  '/productos': typeof ProductosRoute
+  '/quienes-somos': typeof QuienesSomosRoute
+  '/servicios': typeof ServiciosRoute
+  '/terminos-y-condiciones': typeof TerminosYCondicionesRoute
+  '/noticias/$slug': typeof NoticiasSlugRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/contacto': typeof ContactoRoute
+  '/noticias': typeof NoticiasRouteWithChildren
+  '/politica-de-privacidad': typeof PoliticaDePrivacidadRoute
+  '/productos': typeof ProductosRoute
+  '/quienes-somos': typeof QuienesSomosRoute
+  '/servicios': typeof ServiciosRoute
+  '/terminos-y-condiciones': typeof TerminosYCondicionesRoute
+  '/noticias/$slug': typeof NoticiasSlugRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/contacto'
+    | '/noticias'
+    | '/politica-de-privacidad'
+    | '/productos'
+    | '/quienes-somos'
+    | '/servicios'
+    | '/terminos-y-condiciones'
+    | '/noticias/$slug'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/'
+    | '/contacto'
+    | '/noticias'
+    | '/politica-de-privacidad'
+    | '/productos'
+    | '/quienes-somos'
+    | '/servicios'
+    | '/terminos-y-condiciones'
+    | '/noticias/$slug'
+  id:
+    | '__root__'
+    | '/'
+    | '/contacto'
+    | '/noticias'
+    | '/politica-de-privacidad'
+    | '/productos'
+    | '/quienes-somos'
+    | '/servicios'
+    | '/terminos-y-condiciones'
+    | '/noticias/$slug'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  ContactoRoute: typeof ContactoRoute
+  NoticiasRoute: typeof NoticiasRouteWithChildren
+  PoliticaDePrivacidadRoute: typeof PoliticaDePrivacidadRoute
+  ProductosRoute: typeof ProductosRoute
+  QuienesSomosRoute: typeof QuienesSomosRoute
+  ServiciosRoute: typeof ServiciosRoute
+  TerminosYCondicionesRoute: typeof TerminosYCondicionesRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -48,11 +155,86 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/contacto': {
+      id: '/contacto'
+      path: '/contacto'
+      fullPath: '/contacto'
+      preLoaderRoute: typeof ContactoRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/noticias': {
+      id: '/noticias'
+      path: '/noticias'
+      fullPath: '/noticias'
+      preLoaderRoute: typeof NoticiasRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/politica-de-privacidad': {
+      id: '/politica-de-privacidad'
+      path: '/politica-de-privacidad'
+      fullPath: '/politica-de-privacidad'
+      preLoaderRoute: typeof PoliticaDePrivacidadRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/productos': {
+      id: '/productos'
+      path: '/productos'
+      fullPath: '/productos'
+      preLoaderRoute: typeof ProductosRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/quienes-somos': {
+      id: '/quienes-somos'
+      path: '/quienes-somos'
+      fullPath: '/quienes-somos'
+      preLoaderRoute: typeof QuienesSomosRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/servicios': {
+      id: '/servicios'
+      path: '/servicios'
+      fullPath: '/servicios'
+      preLoaderRoute: typeof ServiciosRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/terminos-y-condiciones': {
+      id: '/terminos-y-condiciones'
+      path: '/terminos-y-condiciones'
+      fullPath: '/terminos-y-condiciones'
+      preLoaderRoute: typeof TerminosYCondicionesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/noticias/$slug': {
+      id: '/noticias/$slug'
+      path: '/$slug'
+      fullPath: '/noticias/$slug'
+      preLoaderRoute: typeof NoticiasSlugRouteImport
+      parentRoute: typeof NoticiasRoute
+    }
   }
 }
 
+interface NoticiasRouteChildren {
+  NoticiasSlugRoute: typeof NoticiasSlugRoute
+}
+
+const NoticiasRouteChildren: NoticiasRouteChildren = {
+  NoticiasSlugRoute: NoticiasSlugRoute,
+}
+
+const NoticiasRouteWithChildren = NoticiasRoute._addFileChildren(
+  NoticiasRouteChildren,
+)
+
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  ContactoRoute: ContactoRoute,
+  NoticiasRoute: NoticiasRouteWithChildren,
+  PoliticaDePrivacidadRoute: PoliticaDePrivacidadRoute,
+  ProductosRoute: ProductosRoute,
+  QuienesSomosRoute: QuienesSomosRoute,
+  ServiciosRoute: ServiciosRoute,
+  TerminosYCondicionesRoute: TerminosYCondicionesRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
