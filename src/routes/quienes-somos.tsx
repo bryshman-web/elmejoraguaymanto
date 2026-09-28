@@ -1,5 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { Eye, Flag, HeartHandshake, Leaf, Sprout, Users } from "lucide-react";
+import { Eye, Flag, HeartHandshake, Leaf, Users } from "lucide-react";
 import { CtaBand, FeatureCard, PageHero, SectionHeading } from "@/components/site/site-ui";
 import { images, values } from "@/data/site";
 
