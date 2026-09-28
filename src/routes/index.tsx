@@ -1,24 +1,25 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
+import { ArrowRight, Check, ShieldCheck, Users, MapPin, PackageCheck } from "lucide-react";
+import { HeroSlider } from "@/components/site/hero-slider";
+import { CtaBand, FeatureCard, SectionHeading } from "@/components/site/site-ui";
+import { Button } from "@/components/ui/button";
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
+import { Dialog, DialogContent, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
+import { faqs, images, products } from "@/data/site";
 
-// No head() here: the home route inherits title/description/og/twitter from
-// __root.tsx, and ships no og:image so serve-time hosting can inject the
-// project's social preview (explicit og:image or latest screenshot).
 export const Route = createFileRoute("/")({
-  component: Index,
+  head: () => ({ meta: [{ title: "Aguaymanto Perú | Calidad desde el campo peruano" }, { name: "description", content: "Producción, comercialización y venta de aguaymanto peruano para clientes, restaurantes, tiendas y distribuidores." }, { property: "og:title", content: "Aguaymanto Perú | Calidad desde nuestra tierra" }, { property: "og:description", content: "Aguaymanto peruano fresco y presentaciones comerciales con atención personalizada." }, { property: "og:type", content: "website" }, { name: "twitter:card", content: "summary_large_image" }], links: [{ rel: "canonical", href: "/" }], scripts: [{ type: "application/ld+json", children: JSON.stringify({ "@context": "https://schema.org", "@type": "Organization", name: "Aguaymanto Perú", url: "/", description: "Empresa peruana dedicada a la producción y comercialización de aguaymanto." }) }] }),
+  component: HomePage,
 });
 
-// IMPORTANT: Replace this placeholder. See ./README.md for routing conventions.
-function Index() {
-  return (
-    <div
-      className="flex min-h-screen items-center justify-center"
-      style={{ backgroundColor: "#fcfbf8" }}
-    >
-      <img
-        data-lovable-blank-page-placeholder="REMOVE_THIS"
-        src="https://cdn.gpteng.co/blank-app-v1.svg"
-        alt="Your app will live here!"
-      />
-    </div>
-  );
+function HomePage() {
+  return <>
+    <HeroSlider />
+    <section className="py-24"><div className="container-site grid items-center gap-14 lg:grid-cols-[1fr_1.05fr]"><div className="relative"><img src={images.productsImage} alt="Presentaciones de aguaymanto fresco peruano" loading="lazy" width={1600} height={1200} className="aspect-[4/3] w-full object-cover"/><div className="absolute -bottom-6 right-0 bg-accent p-6 text-accent-foreground md:right-[-24px]"><strong className="font-display text-3xl">Origen</strong><span className="block text-xs font-bold uppercase tracking-[.14em]">Campo peruano</span></div></div><div><SectionHeading eyebrow="SOBRE NOSOTROS" title="Comprometidos con la calidad del aguaymanto peruano" text="Somos una empresa dedicada a la producción y comercialización de aguaymanto, comprometida con ofrecer productos de calidad y construir relaciones comerciales duraderas con nuestros clientes."/><Button asChild variant="link" className="mt-7 h-auto p-0 text-primary"><Link to="/quienes-somos">Conoce quiénes somos <ArrowRight/></Link></Button></div></div></section>
+    <section className="bg-muted py-24"><div className="container-site"><div className="flex flex-col justify-between gap-6 md:flex-row md:items-end"><SectionHeading eyebrow="NUESTROS PRODUCTOS" title="Aguaymanto para cada necesidad comercial" text="Presentaciones pensadas para consumidores, negocios y distribuidores."/><Button asChild variant="outline"><Link to="/productos">Ver catálogo <ArrowRight/></Link></Button></div><div className="mt-12 grid gap-5 md:grid-cols-3">{products.map((p) => <article key={p.title} className="group overflow-hidden bg-card"><div className="overflow-hidden"><img src={p.image} alt={p.title} loading="lazy" width={800} height={600} className="aspect-[4/3] w-full object-cover transition-transform duration-500 group-hover:scale-105"/></div><div className="p-7"><p className="eyebrow text-primary">{p.label}</p><h3 className="font-display text-3xl">{p.title}</h3><p className="mt-3 text-sm leading-7 text-muted-foreground">{p.description}</p><Button asChild variant="link" className="mt-4 h-auto p-0"><Link to="/contacto">Consultar <ArrowRight/></Link></Button></div></article>)}</div></div></section>
+    <section className="py-24"><div className="container-site"><SectionHeading eyebrow="¿POR QUÉ ELEGIRNOS?" title="Confianza construida desde el origen"/><div className="mt-12 grid gap-x-8 md:grid-cols-2 lg:grid-cols-4"><FeatureCard icon={<PackageCheck/>} index="01" title="Producto seleccionado" text="Trabajamos para ofrecer una presentación adecuada y consistente."/><FeatureCard icon={<ShieldCheck/>} index="02" title="Calidad" text="Priorizamos la calidad y el cuidado en cada etapa."/><FeatureCard icon={<Users/>} index="03" title="Atención personalizada" text="Escuchamos las necesidades de cada cliente y negocio."/><FeatureCard icon={<MapPin/>} index="04" title="Origen peruano" text="Nuestro producto tiene origen en el campo peruano."/></div></div></section>
+    <CtaBand text="Atendemos consultas comerciales de restaurantes, tiendas, distribuidores, empresas y otros negocios que requieren aguaymanto."/>
+    <section className="py-24"><div className="container-site"><SectionHeading eyebrow="GALERÍA" title="El campo, el fruto y el cuidado detrás de cada presentación"/><div className="mt-12 grid gap-4 md:grid-cols-4 md:grid-rows-2">{[images.heroField, images.heroFruit, images.heroPack, images.productsImage].map((src,i) => <Dialog key={src}><DialogTrigger asChild><button className={`${i === 0 ? "md:col-span-2 md:row-span-2" : i === 1 ? "md:col-span-2" : ""} group overflow-hidden focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring`} aria-label={`Ampliar fotografía ${i+1}`}><img src={src} alt={["Cultivo de aguaymanto en el campo peruano","Aguaymanto fresco recién cosechado","Proceso de selección y empaque","Presentaciones comerciales de aguaymanto"][i]} loading="lazy" width={900} height={700} className="h-full min-h-56 w-full object-cover transition-transform duration-500 group-hover:scale-105"/></button></DialogTrigger><DialogContent className="max-w-5xl border-0 bg-transparent p-2 shadow-none"><DialogTitle className="sr-only">Fotografía de aguaymanto</DialogTitle><img src={src} alt="Vista ampliada del proceso de aguaymanto" className="max-h-[82vh] w-full object-contain"/></DialogContent></Dialog>)}</div></div></section>
+    <section className="bg-muted py-24"><div className="container-site grid gap-14 lg:grid-cols-[.75fr_1.25fr]"><SectionHeading eyebrow="PREGUNTAS FRECUENTES" title="Resolvemos tus principales consultas" text="Para información específica sobre precios, disponibilidad o entregas, solicita una cotización."/><Accordion type="single" collapsible className="border-t border-border">{faqs.map(([q,a],i) => <AccordionItem key={q} value={`faq-${i}`}><AccordionTrigger className="py-5 text-base">{q}</AccordionTrigger><AccordionContent className="max-w-2xl leading-7 text-muted-foreground">{a}</AccordionContent></AccordionItem>)}</Accordion></div></section>
+  </>;
 }
