@@ -26,7 +26,7 @@ export const slides = [
   { image: heroFruit, alt: "Aguaymanto peruano fresco con campos andinos al fondo", eyebrow: "ORIGEN PERUANO · CALIDAD NATURAL", title: "Aguaymanto peruano, calidad que nace en nuestra tierra", text: "Producimos y comercializamos aguaymanto seleccionado, llevando el sabor y la calidad del campo peruano a nuestros clientes.", cta: "Conocer nuestros productos", to: "/productos" },
   { image: heroField, alt: "Productor cosechando aguaymanto en un campo peruano", eyebrow: "DEL CAMPO A TU NEGOCIO", title: "Del campo peruano a nuevos mercados", text: "Trabajamos para ofrecer productos agrícolas de calidad, con compromiso, responsabilidad y visión de crecimiento.", cta: "Conoce nuestra empresa", to: "/quienes-somos" },
   { image: heroPack, alt: "Selección y empaque profesional de aguaymanto", eyebrow: "SELECCIÓN · PRESENTACIÓN · SERVICIO", title: "Natural, versátil y de excelente calidad", text: "Atendemos a clientes particulares, restaurantes, tiendas, distribuidores y compradores mayoristas.", cta: "Ver productos", to: "/productos" },
-];
+] as const;
 
 export const products = [
   { title: "Aguaymanto fresco", description: "Fruto seleccionado cuidadosamente para conservar su presentación, sabor y frescura.", label: "Producto fresco", image: heroFruit, details: ["Presentación: [EDITABLE]", "Peso: [EDITABLE]", "Disponibilidad: [EDITABLE]"] },
