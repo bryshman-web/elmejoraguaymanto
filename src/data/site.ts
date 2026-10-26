@@ -4,9 +4,9 @@ import heroPack from "@/assets/hero-empaque.jpg";
 import productsImage from "@/assets/productos-aguaymanto.jpg";
 
 export const site = {
-  name: "AGUAYMANTO PERÚ",
-  legalName: "[NOMBRE DE LA EMPRESA]",
-  tagline: "Calidad y compromiso desde el campo peruano.",
+  name: "EL MEJOR AGUAYMANTO",
+  legalName: "El Mejor Aguaymanto",
+  tagline: "Empresa peruana dedicada a la producción y comercialización de aguaymanto de calidad, llevando el mejor fruto del campo a nuestros clientes.",
   phone: "+51 398 673 073",
   whatsapp: "+51 398 673 073",
   whatsappDigits: "51398673073",
